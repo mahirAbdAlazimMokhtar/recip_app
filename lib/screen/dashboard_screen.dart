@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recip_app/utils/responsive_layout.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -29,18 +30,29 @@ class DashboardScreen extends StatelessWidget {
             // ],
           ),
           //this for list of widget
-          SliverList(
-              //this attr to give you list of widget
-              delegate: SliverChildListDelegate(
-            [
-              Text(
-                'the recipe of the Day',
-                style: TextStyle(
-                  fontSize: 30,
+          SliverPadding(
+            padding: EdgeInsets.symmetric(
+              horizontal: ResponsiveLayout.isSmallScreen(context) ? 20 : 40,
+            ),
+            sliver: SliverList(
+                //this attr to give you list of widget
+                delegate: SliverChildListDelegate(
+              [
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 25,
+                    top: 20,
+                  ),
+                  child: Text(
+                    'The recipe of the Day',
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
                 ),
-              ),
-            ],
-          ))
+              ],
+            )),
+          )
         ],
       ),
     );
