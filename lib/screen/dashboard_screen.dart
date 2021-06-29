@@ -62,13 +62,23 @@ class DashboardScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 heightPlaceHolder(isMobileScreen),
-                ListView.separated(
-                    itemBuilder: itemBuilder,
-                    separatorBuilder: separatorBuilder,
-                    itemCount: itemCount)
+                //list . separated you can put the space between the elements
+                ConstrainedBox(
+                  constraints: BoxConstraints.tight(MediaQuery.of(context).size
+                  ),
+                  child: ListView.separated(
+                      itemBuilder: (context, index) => WaveBorderCard(),
+                      separatorBuilder: (context, index) => SizedBox(
+                            width: 20,
+                          ),
+                      itemCount: 3,
+                    scrollDirection: Axis.horizontal,
+
+                  ),
+                )
               ],
             )),
-          )
+          ),
         ],
       ),
     );
@@ -79,8 +89,8 @@ class WaveBorderCard extends StatelessWidget {
   final String recipeCardName;
   const WaveBorderCard({
     Key? key,
-    required this.imageRecipeOfTheDay,
-    required this.isMobileScreen,
+    this.imageRecipeOfTheDay = '',
+    this.isMobileScreen = true,
     this.recipeCardName = "",
   }) : super(key: key);
 
