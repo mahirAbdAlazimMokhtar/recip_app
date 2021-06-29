@@ -9,7 +9,7 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     const imageRecipeOfTheDay =
         'https://images.unsplash.com/photo-1612392062126-5cc76074df9c?ixid=MnwxMjA3fDF8MHxzZWFyY2h8NDh8fGZvb2R8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60';
-    //for dont repet the code twice
+    //for don't repet the code twice
     var isMobileScreen = ResponsiveLayout.isSmallScreen(context);
     return Scaffold(
       body: CustomScrollView(
@@ -47,7 +47,7 @@ class DashboardScreen extends StatelessWidget {
               [
                 Text(
                   'The recipe of the Day',
-                  //this for custome color like html header
+                  //this for custom color like html header
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 heightPlaceHolder(isMobileScreen),
@@ -64,7 +64,7 @@ class DashboardScreen extends StatelessWidget {
                 heightPlaceHolder(isMobileScreen),
                 //list . separated you can put the space between the elements
                 ConstrainedBox(
-                  constraints: BoxConstraints.tight(MediaQuery.of(context).size
+                  constraints: BoxConstraints(maxHeight: 200,
                   ),
                   child: ListView.separated(
                       itemBuilder: (context, index) => WaveBorderCard(),
@@ -129,9 +129,7 @@ class WaveBorderCard extends StatelessWidget {
               ]),
         ),
         Padding(
-          padding: EdgeInsets.symmetric(
-            vertical: isMobileScreen ? 150 : 32,
-          ),
+          padding: const EdgeInsets.only(left: 0 , top: 150),
           child: Container(
             alignment: Alignment.centerLeft,
             padding: EdgeInsets.only(
