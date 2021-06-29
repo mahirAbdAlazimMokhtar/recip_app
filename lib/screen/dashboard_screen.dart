@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:recip_app/utils/responsive_layout.dart';
 
 class DashboardScreen extends StatelessWidget {
-  Widget hieghtPlaceHolder(bool isMobileScreen) => SizedBox(
-        height: isMobileScreen ? 20 : 40,
+  Widget heightPlaceHolder(bool isMobileScreen) => SizedBox(
+        height: isMobileScreen ? 20 : 30,
       );
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class DashboardScreen extends StatelessWidget {
           SliverPadding(
             padding: EdgeInsets.symmetric(
               horizontal: isMobileScreen ? 20 : 40,
-              vertical: isMobileScreen ? 40 : 50,
+              vertical: isMobileScreen ? 10 : 10,
             ),
             sliver: SliverList(
                 //this attr to give you list of widget
@@ -47,16 +47,25 @@ class DashboardScreen extends StatelessWidget {
               [
                 Text(
                   'The recipe of the Day',
-                  style: TextStyle(
-                    fontSize: 20,
-                  ),
+                  //this for custome color like html header
+                  style: Theme.of(context).textTheme.headline6,
                 ),
-                hieghtPlaceHolder(isMobileScreen),
+                heightPlaceHolder(isMobileScreen),
                 WaveBorderCard(
                   imageRecipeOfTheDay: imageRecipeOfTheDay,
                   isMobileScreen: isMobileScreen,
                   recipeCardName: 'Pancakes',
-                )
+                ),
+                heightPlaceHolder(isMobileScreen),
+                Text(
+                  'Categories',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                heightPlaceHolder(isMobileScreen),
+                ListView.separated(
+                    itemBuilder: itemBuilder,
+                    separatorBuilder: separatorBuilder,
+                    itemCount: itemCount)
               ],
             )),
           )
@@ -90,12 +99,13 @@ class WaveBorderCard extends StatelessWidget {
           width: 400,
           decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(
-                    30.0,
-                  ),
-                  topLeft: Radius.circular(
-                    30,
-                  )),
+                bottomRight: Radius.circular(
+                  30.0,
+                ),
+                topLeft: Radius.circular(
+                  30,
+                ),
+              ),
               image: DecorationImage(
                 image: NetworkImage(imageRecipeOfTheDay),
                 fit: BoxFit.cover,
@@ -126,7 +136,9 @@ class WaveBorderCard extends StatelessWidget {
             height: isMobileScreen ? 40 : 200,
             width: isMobileScreen ? 300 : 500,
             decoration: BoxDecoration(
-              color: const Color(0xCCF7EBEB),
+              color: const Color(
+                0xCCEEE6E6,
+              ),
               borderRadius: BorderRadius.only(
                 bottomRight: Radius.circular(30),
               ),
