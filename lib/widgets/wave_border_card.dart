@@ -3,12 +3,14 @@ import 'package:recip_app/utils/responsive_layout.dart';
 
 class WaveBorderCard extends StatelessWidget {
   final String recipeCardName;
+  final String imageUrl;
   const WaveBorderCard({
     Key? key,
     this.imageRecipeOfTheDay = '',
     this.isMobileScreen = true,
     this.recipeCardName = "",
     this.width = 320,
+    this.imageUrl='https://images.unsplash.com/photo-1598103442097-8b74394b95c6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
   }) : super(key: key);
 
   final String imageRecipeOfTheDay;
@@ -18,15 +20,13 @@ class WaveBorderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var isMobileScreen = ResponsiveLayout.isSmallScreen(context);
-    const imageRecipeOfTheDay =
-        'https://images.unsplash.com/photo-1513104890138-7c749659a591?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80';
     return Stack(
       children: [
         Container(
           height: 200,
           width: width,
-          decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
+          decoration: BoxDecoration(
+              borderRadius:const BorderRadius.only(
                 bottomRight: Radius.circular(
                     30.0
                 ),
@@ -35,7 +35,7 @@ class WaveBorderCard extends StatelessWidget {
                 ),
               ),
               image: DecorationImage(
-                image: NetworkImage(imageRecipeOfTheDay),
+                image: NetworkImage(imageUrl),
                 fit: BoxFit.cover,
               ),
               boxShadow: [
